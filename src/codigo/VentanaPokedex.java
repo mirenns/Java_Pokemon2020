@@ -60,7 +60,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
                 imagenPokemon.getHeight());
         Graphics2D g2 = buffer1.createGraphics();
         
-        dibujaElPokemonQueEstaEnLaPosicion(30);
+        dibujaElPokemonQueEstaEnLaPosicion(1);
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -128,67 +128,56 @@ public class VentanaPokedex extends javax.swing.JFrame {
         izq = new javax.swing.JButton();
         der = new javax.swing.JButton();
         nombrePokemon = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         javax.swing.GroupLayout imagenPokemonLayout = new javax.swing.GroupLayout(imagenPokemon);
         imagenPokemon.setLayout(imagenPokemonLayout);
         imagenPokemonLayout.setHorizontalGroup(
             imagenPokemonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGap(0, 250, Short.MAX_VALUE)
         );
         imagenPokemonLayout.setVerticalGroup(
             imagenPokemonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
 
+        getContentPane().add(imagenPokemon);
+        imagenPokemon.setBounds(60, 170, 250, 167);
+
+        izq.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
         izq.setText("<");
         izq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izqActionPerformed(evt);
             }
         });
+        getContentPane().add(izq);
+        izq.setBounds(440, 460, 130, 50);
 
+        der.setFont(new java.awt.Font("Lucida Grande", 1, 48)); // NOI18N
         der.setText(">");
         der.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derActionPerformed(evt);
             }
         });
+        getContentPane().add(der);
+        der.setBounds(570, 460, 130, 50);
 
+        nombrePokemon.setBackground(new java.awt.Color(153, 255, 153));
         nombrePokemon.setFont(new java.awt.Font("Malayalam MN", 0, 18)); // NOI18N
-        nombrePokemon.setForeground(new java.awt.Color(255, 0, 0));
         nombrePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombrePokemon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 102), 3));
+        nombrePokemon.setOpaque(true);
+        getContentPane().add(nombrePokemon);
+        nombrePokemon.setBounds(440, 180, 260, 270);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(izq, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(der, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imagenPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(nombrePokemon, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagenPokemon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombrePokemon, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(izq, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(der, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pokedex.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 750, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -264,6 +253,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
     private javax.swing.JButton der;
     private javax.swing.JPanel imagenPokemon;
     private javax.swing.JButton izq;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nombrePokemon;
     // End of variables declaration//GEN-END:variables
 }
