@@ -77,9 +77,16 @@ public class VentanaPokedex extends javax.swing.JFrame {
                 p.nombre = resultadoConsulta.getString("nombre"); 
                 p.especie = resultadoConsulta.getString("especie"); 
                 p.movimiento1 = resultadoConsulta.getString("movimiento1"); 
+                p.movimiento2 = resultadoConsulta.getString("movimiento2"); 
+                p.movimiento3 = resultadoConsulta.getString("movimiento3"); 
+                p.movimiento4 = resultadoConsulta.getString("movimiento4"); 
                 p.peso = resultadoConsulta.getString("peso"); 
-                p.preEvolucion = resultadoConsulta.getInt("preEvolucion");
-                p.posEvolucion = resultadoConsulta.getInt("posEvolucion");
+                p.altura = resultadoConsulta.getString("altura"); 
+                p.descripcion = resultadoConsulta.getString("descripcion");
+                p.tipo1 = resultadoConsulta.getString("tipo1");
+                p.tipo2 = resultadoConsulta.getString("tipo2");
+                
+                
                 
                 listaPokemons.put(resultadoConsulta.getString("id"), p);
             }
@@ -125,9 +132,19 @@ public class VentanaPokedex extends javax.swing.JFrame {
     private void initComponents() {
 
         imagenPokemon = new javax.swing.JPanel();
-        izq = new javax.swing.JButton();
         der = new javax.swing.JButton();
         nombrePokemon = new javax.swing.JLabel();
+        descripcion = new javax.swing.JLabel();
+        altura = new javax.swing.JLabel();
+        peso = new javax.swing.JLabel();
+        especie = new javax.swing.JLabel();
+        izq = new javax.swing.JButton();
+        tipo1 = new javax.swing.JLabel();
+        tipo2 = new javax.swing.JLabel();
+        movimiento1 = new javax.swing.JLabel();
+        movimiento2 = new javax.swing.JLabel();
+        movimiento3 = new javax.swing.JLabel();
+        movimiento4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -141,43 +158,103 @@ public class VentanaPokedex extends javax.swing.JFrame {
         );
         imagenPokemonLayout.setVerticalGroup(
             imagenPokemonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGap(0, 170, Short.MAX_VALUE)
         );
 
         getContentPane().add(imagenPokemon);
-        imagenPokemon.setBounds(60, 170, 250, 167);
-
-        izq.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
-        izq.setText("<");
-        izq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                izqActionPerformed(evt);
-            }
-        });
-        getContentPane().add(izq);
-        izq.setBounds(440, 460, 130, 50);
+        imagenPokemon.setBounds(60, 160, 250, 170);
 
         der.setFont(new java.awt.Font("Lucida Grande", 1, 48)); // NOI18N
-        der.setText(">");
+        der.setBorder(null);
         der.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derActionPerformed(evt);
             }
         });
         getContentPane().add(der);
-        der.setBounds(570, 460, 130, 50);
+        der.setBounds(290, 420, 50, 40);
 
-        nombrePokemon.setBackground(new java.awt.Color(153, 255, 153));
+        nombrePokemon.setBackground(new java.awt.Color(0, 0, 0));
         nombrePokemon.setFont(new java.awt.Font("Malayalam MN", 0, 18)); // NOI18N
+        nombrePokemon.setForeground(new java.awt.Color(255, 255, 255));
         nombrePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombrePokemon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 102), 3));
         nombrePokemon.setOpaque(true);
         getContentPane().add(nombrePokemon);
-        nombrePokemon.setBounds(440, 180, 260, 270);
+        nombrePokemon.setBounds(430, 150, 140, 40);
+
+        descripcion.setFont(new java.awt.Font("Malayalam MN", 0, 10)); // NOI18N
+        descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        descripcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(descripcion);
+        descripcion.setBounds(450, 190, 240, 70);
+
+        altura.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
+        altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(altura);
+        altura.setBounds(452, 380, 50, 49);
+
+        peso.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
+        peso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(peso);
+        peso.setBounds(500, 380, 50, 49);
+
+        especie.setForeground(new java.awt.Color(255, 255, 255));
+        especie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(especie);
+        especie.setBounds(90, 450, 118, 50);
+
+        izq.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
+        izq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        izq.setBorderPainted(false);
+        izq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                izqActionPerformed(evt);
+            }
+        });
+        getContentPane().add(izq);
+        izq.setBounds(240, 420, 50, 40);
+
+        tipo1.setForeground(new java.awt.Color(153, 255, 204));
+        tipo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(tipo1);
+        tipo1.setBounds(450, 460, 110, 40);
+
+        tipo2.setForeground(new java.awt.Color(153, 255, 204));
+        tipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(tipo2);
+        tipo2.setBounds(580, 460, 110, 40);
+
+        movimiento1.setBackground(new java.awt.Color(0, 0, 0));
+        movimiento1.setForeground(new java.awt.Color(255, 255, 255));
+        movimiento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        movimiento1.setOpaque(true);
+        getContentPane().add(movimiento1);
+        movimiento1.setBounds(440, 280, 130, 40);
+
+        movimiento2.setBackground(new java.awt.Color(0, 0, 0));
+        movimiento2.setForeground(new java.awt.Color(255, 255, 255));
+        movimiento2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        movimiento2.setOpaque(true);
+        getContentPane().add(movimiento2);
+        movimiento2.setBounds(440, 320, 130, 40);
+
+        movimiento3.setBackground(new java.awt.Color(0, 0, 0));
+        movimiento3.setForeground(new java.awt.Color(255, 255, 255));
+        movimiento3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        movimiento3.setOpaque(true);
+        getContentPane().add(movimiento3);
+        movimiento3.setBounds(570, 280, 120, 40);
+
+        movimiento4.setBackground(new java.awt.Color(0, 0, 0));
+        movimiento4.setForeground(new java.awt.Color(255, 255, 255));
+        movimiento4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        movimiento4.setOpaque(true);
+        getContentPane().add(movimiento4);
+        movimiento4.setBounds(570, 320, 120, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pokedex.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 560);
+        jLabel1.setBounds(0, 0, 750, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,9 +264,30 @@ public class VentanaPokedex extends javax.swing.JFrame {
         Pokemon p = listaPokemons.get(String.valueOf(contador+1));
         if (p != null) {
             nombrePokemon.setText(p.nombre);
+            descripcion.setText(p.descripcion);
+            altura.setText(p.altura);
+            peso.setText(p.peso);
+            especie.setText(p.especie);
+            movimiento1.setText(p.movimiento1);
+            movimiento2.setText(p.movimiento2);
+            movimiento3.setText(p.movimiento3);
+            movimiento4.setText(p.movimiento4);
+            tipo1.setText(p.tipo1);
+            tipo2.setText(p.tipo2);
+            
         }
         else {
             nombrePokemon.setText("NO HAY DATOS");
+            descripcion.setText("NO HAY DATOS");
+            altura.setText("NO HAY DATOS");
+            peso.setText("NO HAY DATOS");
+            especie.setText("NO HAY DATOS");
+            movimiento1.setText("NO HAY DATOS");
+            movimiento2.setText("NO HAY DATOS");
+            movimiento3.setText("NO HAY DATOS");
+            movimiento4.setText("NO HAY DATOS");
+            tipo1.setText("NO HAY DATOS");
+            tipo2.setText("NO HAY DATOS");
         }
         contador --;
         if (contador <=0){
@@ -207,9 +305,30 @@ public class VentanaPokedex extends javax.swing.JFrame {
         Pokemon p = listaPokemons.get(String.valueOf(contador));
         if (p != null) {
             nombrePokemon.setText(p.nombre);
+            descripcion.setText(p.descripcion);
+            altura.setText(p.altura);
+            peso.setText(p.peso);
+            especie.setText(p.especie);
+            movimiento1.setText(p.movimiento1);
+            movimiento2.setText(p.movimiento2);
+            movimiento3.setText(p.movimiento3);
+            movimiento4.setText(p.movimiento4);
+            tipo1.setText(p.tipo1);
+            tipo2.setText(p.tipo2);
+            
         }
         else {
             nombrePokemon.setText("NO HAY DATOS");
+            descripcion.setText("NO HAY DATOS");
+            altura.setText("NO HAY DATOS");
+            peso.setText("NO HAY DATOS");
+            especie.setText("NO HAY DATOS");
+            movimiento1.setText("NO HAY DATOS");
+            movimiento2.setText("NO HAY DATOS");
+            movimiento3.setText("NO HAY DATOS");
+            movimiento4.setText("NO HAY DATOS");
+            tipo1.setText("NO HAY DATOS");
+            tipo2.setText("NO HAY DATOS");
         }
         
     }//GEN-LAST:event_derActionPerformed
@@ -250,10 +369,20 @@ public class VentanaPokedex extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel altura;
     private javax.swing.JButton der;
+    private javax.swing.JLabel descripcion;
+    private javax.swing.JLabel especie;
     private javax.swing.JPanel imagenPokemon;
     private javax.swing.JButton izq;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel movimiento1;
+    private javax.swing.JLabel movimiento2;
+    private javax.swing.JLabel movimiento3;
+    private javax.swing.JLabel movimiento4;
     private javax.swing.JLabel nombrePokemon;
+    private javax.swing.JLabel peso;
+    private javax.swing.JLabel tipo1;
+    private javax.swing.JLabel tipo2;
     // End of variables declaration//GEN-END:variables
 }
