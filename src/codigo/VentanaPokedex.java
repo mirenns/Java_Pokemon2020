@@ -10,12 +10,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.UIDefaults;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -49,6 +48,13 @@ public class VentanaPokedex extends javax.swing.JFrame {
      */
     public VentanaPokedex() {
         initComponents();
+        Color bgColor = Color.BLACK;
+        UIDefaults defaults = new UIDefaults();
+        defaults.put("TextPane.background", new ColorUIResource(bgColor));
+        defaults.put("TextPane[Enabled].backgroundPainter", bgColor);
+        descripcion.putClientProperty("Nimbus.Overrides", defaults);
+        descripcion.putClientProperty("Nimbus.Overrides.InheritDefaults", true);
+        descripcion.setBackground(bgColor);
         try {
             imagen1 = ImageIO.read(getClass()
                     .getResource("/imagenes/black-white.png"));
@@ -134,7 +140,6 @@ public class VentanaPokedex extends javax.swing.JFrame {
         imagenPokemon = new javax.swing.JPanel();
         der = new javax.swing.JButton();
         nombrePokemon = new javax.swing.JLabel();
-        descripcion = new javax.swing.JLabel();
         altura = new javax.swing.JLabel();
         peso = new javax.swing.JLabel();
         especie = new javax.swing.JLabel();
@@ -145,7 +150,9 @@ public class VentanaPokedex extends javax.swing.JFrame {
         movimiento2 = new javax.swing.JLabel();
         movimiento3 = new javax.swing.JLabel();
         movimiento4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -166,6 +173,8 @@ public class VentanaPokedex extends javax.swing.JFrame {
 
         der.setFont(new java.awt.Font("Lucida Grande", 1, 48)); // NOI18N
         der.setBorder(null);
+        der.setBorderPainted(false);
+        der.setContentAreaFilled(false);
         der.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derActionPerformed(evt);
@@ -181,12 +190,6 @@ public class VentanaPokedex extends javax.swing.JFrame {
         nombrePokemon.setOpaque(true);
         getContentPane().add(nombrePokemon);
         nombrePokemon.setBounds(430, 150, 140, 40);
-
-        descripcion.setFont(new java.awt.Font("Malayalam MN", 0, 10)); // NOI18N
-        descripcion.setForeground(new java.awt.Color(255, 255, 255));
-        descripcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        getContentPane().add(descripcion);
-        descripcion.setBounds(450, 190, 240, 70);
 
         altura.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -204,8 +207,9 @@ public class VentanaPokedex extends javax.swing.JFrame {
         especie.setBounds(90, 450, 118, 50);
 
         izq.setFont(new java.awt.Font("Lucida Grande", 0, 48)); // NOI18N
-        izq.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        izq.setBorder(null);
         izq.setBorderPainted(false);
+        izq.setContentAreaFilled(false);
         izq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izqActionPerformed(evt);
@@ -214,12 +218,12 @@ public class VentanaPokedex extends javax.swing.JFrame {
         getContentPane().add(izq);
         izq.setBounds(240, 420, 50, 40);
 
-        tipo1.setForeground(new java.awt.Color(153, 255, 204));
+        tipo1.setForeground(new java.awt.Color(255, 255, 255));
         tipo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(tipo1);
         tipo1.setBounds(450, 460, 110, 40);
 
-        tipo2.setForeground(new java.awt.Color(153, 255, 204));
+        tipo2.setForeground(new java.awt.Color(255, 255, 255));
         tipo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(tipo2);
         tipo2.setBounds(580, 460, 110, 40);
@@ -252,9 +256,19 @@ public class VentanaPokedex extends javax.swing.JFrame {
         getContentPane().add(movimiento4);
         movimiento4.setBounds(570, 320, 120, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pokedex.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 550);
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+
+        descripcion.setBackground(new java.awt.Color(0, 0, 0));
+        descripcion.setFont(new java.awt.Font("Malayalam MN", 0, 10)); // NOI18N
+        descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(descripcion);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(450, 190, 240, 80);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pokedex.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 750, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,11 +385,12 @@ public class VentanaPokedex extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel altura;
     private javax.swing.JButton der;
-    private javax.swing.JLabel descripcion;
+    private javax.swing.JTextPane descripcion;
     private javax.swing.JLabel especie;
     private javax.swing.JPanel imagenPokemon;
     private javax.swing.JButton izq;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel movimiento1;
     private javax.swing.JLabel movimiento2;
     private javax.swing.JLabel movimiento3;
