@@ -23,6 +23,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.UIDefaults;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -53,6 +55,13 @@ public class VentanaPokedex extends javax.swing.JFrame {
      */
     public VentanaPokedex() {
         initComponents();
+        Color bgColor = Color.BLACK;
+        UIDefaults defaults = new UIDefaults();
+        defaults.put("TextPane.background", new ColorUIResource(bgColor));
+        defaults.put("TextPane[Enabled].backgroundPainter", bgColor);
+        descripcion.putClientProperty("Nimbus.Overrides", defaults);
+        descripcion.putClientProperty("Nimbus.Overrides.InheritDefaults", true);
+        descripcion.setBackground(bgColor);
         try {
             imagen1 = ImageIO.read(getClass()
                     .getResource("/imagenes/black-white.png"));
@@ -177,7 +186,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         movimiento1.setForeground(new java.awt.Color(255, 255, 255));
         movimiento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(movimiento1);
-        movimiento1.setBounds(440, 330, 133, 34);
+        movimiento1.setBounds(430, 330, 133, 34);
 
         movimiento2.setForeground(new java.awt.Color(255, 255, 255));
         movimiento2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
