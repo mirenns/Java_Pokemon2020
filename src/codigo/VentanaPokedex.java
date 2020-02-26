@@ -56,12 +56,12 @@ public class VentanaPokedex extends javax.swing.JFrame {
                 imagenPokemon.getHeight());
         Graphics2D g2 = buffer1.createGraphics();
         
-        dibujaElPokemonQueEstaEnLaPosicion(30);
+        dibujaElPokemonQueEstaEnLaPosicion(1);
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager
-                    .getConnection("jdbc:mysql://127.0.0.1/test",
+                    .getConnection("jdbc:mysql://127.0.0.1/pokedex",
                             "root",
                             "");
             estado = conexion.createStatement();
@@ -142,36 +142,39 @@ public class VentanaPokedex extends javax.swing.JFrame {
         getContentPane().add(imagenPokemon);
         imagenPokemon.setBounds(57, 170, 250, 167);
 
-        izq.setText("<");
+        izq.setBorderPainted(false);
         izq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 izqActionPerformed(evt);
             }
         });
         getContentPane().add(izq);
-        izq.setBounds(210, 430, 66, 43);
+        izq.setBounds(226, 423, 50, 50);
 
+        der.setBorderPainted(false);
         der.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derActionPerformed(evt);
             }
         });
         getContentPane().add(der);
-        der.setBounds(300, 430, 60, 40);
+        der.setBounds(300, 420, 40, 50);
 
-        nombrePokemon.setForeground(new java.awt.Color(255, 0, 0));
+        nombrePokemon.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
+        nombrePokemon.setForeground(new java.awt.Color(255, 255, 255));
+        nombrePokemon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(nombrePokemon);
-        nombrePokemon.setBounds(440, 170, 264, 45);
+        nombrePokemon.setBounds(440, 170, 264, 40);
 
         movimiento1.setForeground(new java.awt.Color(255, 255, 255));
         movimiento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(movimiento1);
-        movimiento1.setBounds(580, 340, 133, 34);
+        movimiento1.setBounds(440, 330, 133, 34);
 
         movimiento2.setForeground(new java.awt.Color(255, 255, 255));
         movimiento2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(movimiento2);
-        movimiento2.setBounds(440, 340, 125, 34);
+        movimiento2.setBounds(580, 330, 125, 34);
 
         descripcion.setBackground(new java.awt.Color(0, 0, 0));
         descripcion.setBorder(null);
@@ -184,12 +187,12 @@ public class VentanaPokedex extends javax.swing.JFrame {
         altura.setForeground(new java.awt.Color(255, 255, 255));
         altura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(altura);
-        altura.setBounds(440, 406, 0, 40);
+        altura.setBounds(440, 400, 40, 40);
 
         peso.setForeground(new java.awt.Color(255, 255, 255));
         peso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(peso);
-        peso.setBounds(510, 410, 0, 43);
+        peso.setBounds(500, 400, 40, 43);
 
         jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("Altura");
@@ -199,12 +202,12 @@ public class VentanaPokedex extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 255, 255));
         jLabel2.setText("Peso");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(510, 380, 29, 16);
+        jLabel2.setBounds(500, 380, 29, 16);
 
         jLabel3.setForeground(new java.awt.Color(153, 255, 255));
         jLabel3.setText("Movimiento 1");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(440, 310, 86, 16);
+        jLabel3.setBounds(460, 310, 86, 16);
 
         jLabel4.setForeground(new java.awt.Color(153, 255, 255));
         jLabel4.setText("Movimiento 2");
@@ -214,7 +217,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 255, 255));
         jLabel5.setText("Habilidad");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(630, 380, 60, 16);
+        jLabel5.setBounds(610, 380, 60, 16);
 
         habilidad.setForeground(new java.awt.Color(255, 255, 255));
         habilidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -224,7 +227,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setOpaque(true);
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(430, 170, 280, 340);
+        jLabel7.setBounds(430, 170, 280, 350);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pokedex.png"))); // NOI18N
         jLabel6.setText("jLabel6");
