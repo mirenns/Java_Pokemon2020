@@ -260,6 +260,23 @@ public class VentanaPokedex extends javax.swing.JFrame {
             contador = 1;
         }
         dibujaElPokemonQueEstaEnLaPosicion(contador);
+        
+        try {
+            resultadoConsulta = estado.executeQuery("select * from pokemon where id=" + (contador+1));
+            if (resultadoConsulta.next()){
+                nombrePokemon.setText(resultadoConsulta.getString(2));
+                altura.setText(resultadoConsulta.getString(3));
+                peso.setText(resultadoConsulta.getString(4));
+                movimiento1.setText(resultadoConsulta.getString(10));
+                movimiento2.setText(resultadoConsulta.getString(11));
+                habilidad.setText(resultadoConsulta.getString(9));
+                descripcion.setText(resultadoConsulta.getString(16));
+            }
+            else{
+                nombrePokemon.setText("Este pokemon no figura en la pokedex");
+            }
+        } catch (SQLException ex) {
+        }
     }//GEN-LAST:event_izqActionPerformed
 
     private void derActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derActionPerformed
@@ -275,6 +292,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
                 movimiento1.setText(resultadoConsulta.getString(10));
                 movimiento2.setText(resultadoConsulta.getString(11));
                 habilidad.setText(resultadoConsulta.getString(9));
+                descripcion.setText(resultadoConsulta.getString(16));
             }
             else{
                 nombrePokemon.setText("Este pokemon no figura en la pokedex");
